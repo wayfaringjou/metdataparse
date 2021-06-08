@@ -1,9 +1,13 @@
 // Papa module for csv parsing and fs for file read/write
 const Papa = require('papaparse');
 const fs = require('fs');
+const ProgressBar = require('progress');
 
 // Setup file stream for reading
 const file = fs.createReadStream('./MetObjects.csv');
+
+// Stop if file not found
+file.on('error', () => console.error("ERROR: Missing MetObjects.csv. Get it from https://github.com/metmuseum/openaccess.git"))
 
 // Globals. 'COUNT' keeps track of rows that pass conditions and 'OBJECTS' holds data entries
 let OBJECTS = {};
@@ -77,6 +81,9 @@ Tags AAT URL,
 Tags Wikidata URL
 */
 
+// Set progress bar
+const bar = new ProgressBar(':bar :percent', {total: 273786, width: 50});
+
 // What to do for each row of data
 const handleData = (row) => {
   // Set conditions for selecting rows
@@ -115,6 +122,7 @@ const handleData = (row) => {
     }
     // Add to selected rows counter
     COUNT++;
+    bar.tick();
   }
 }
 
