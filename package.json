@@ -5,7 +5,8 @@
   "main": "parser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "parse": "node parser.js"
+    "generate-csv": "node generateCSV.js",
+    "generate-seed": "node generateSeed.js"
   },
   "repository": {
     "type": "git",
