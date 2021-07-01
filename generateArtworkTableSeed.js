@@ -30,6 +30,7 @@ const TABLECOLUMNS = [
   '"Artist Display Name"',
   '"Artist Begin Date"',
   '"Artist End Date"',
+  '"Artist Nationality"',
   '"Is Highlight"',
   '"API entry"',
   '"Museum entry"',
@@ -120,22 +121,59 @@ const handleData = (row) => {
   ) {
     //console.log(row["Title"])
     //console.log(row)
+    //
+
+    const filterArtistName = (name) => {
+      let filteredName;
+      if (name.includes("|")) {
+        filteredName = name.split("|")[0];
+      }
+
+      if (name.includes("'")) {
+        filteredName =
+          filteredName?.replace(/\'/g, "''") ?? name.replace(/\'/g, "''");
+      }
+      console.log(`Name: ${name}`);
+      console.log(`Filtered: ${filteredName}`);
+      return `'${filteredName ?? name}'`;
+    };
 
     // Select rows to add to parsed document
     const filteredRow = [
       row["Object ID"],
-      row["Department"] ? `'${row["Department"].replace(/\'/g,"''")}'` : "null",
-      row["Classification"] ? `'${row["Classification"].replace(/\'/g,"''")}'` : "null",
-      row["Object Name"] ? `'${row["Object Name"].replace(/\'/g,"''")}'` : "null",
-      row["Title"] ? `'${row["Title"].replace(/\'/g,"''")}'` : "null",
-      row["Culture"] ? `'${row["Culture"].replace(/\'/g,"''")}'` : "null",
-      row["Country"] ? `'${row["Country"].replace(/\'/g,"''")}'` : "null",
-      row["Object Date"] ? `'${row["Object Date"].replace(/\'/g,"''")}'` : "null",
-      row["Object Begin Date"] ? `'${row["Object Begin Date"].replace(/\'/g,"''")}'` : "null",
-      row["Object End Date"] ? `'${row["Object End Date"].replace(/\'/g,"''")}'` : "null",
-      row["Artist Display Name"] ? `'${row["Artist Display Name"].replace(/\'/g,"''")}'` : "null",
-      row["Artist Begin Date"] ? `'${row["Artist Begin Date"].replace(/\'/g,"''")}'` : "null",
-      row["Artist End Date"] ? `'${row["Artist End Date"].replace(/\'/g,"''")}'` : "null",
+      row["Department"]
+        ? `'${row["Department"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Classification"]
+        ? `'${row["Classification"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Object Name"]
+        ? `'${row["Object Name"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Title"] ? `'${row["Title"].replace(/\'/g, "''")}'` : "null",
+      row["Culture"] ? `'${row["Culture"].replace(/\'/g, "''")}'` : "null",
+      row["Country"] ? `'${row["Country"].replace(/\'/g, "''")}'` : "null",
+      row["Object Date"]
+        ? `'${row["Object Date"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Object Begin Date"]
+        ? `'${row["Object Begin Date"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Object End Date"]
+        ? `'${row["Object End Date"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Artist Display Name"]
+        ? filterArtistName(row["Artist Display Name"])
+        : "null",
+      row["Artist Begin Date"]
+        ? `'${row["Artist Begin Date"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Artist End Date"]
+        ? `'${row["Artist End Date"].replace(/\'/g, "''")}'`
+        : "null",
+      row["Artist Nationality"]
+        ? `'${row["Artist Nationality"].replace(/\'/g, "''")}'`
+        : "null",
       row["Is Highlight"].toLowerCase(),
       `'${apiEndpoint}${row["Object ID"]}'`,
       `'${metMuseumURL}${row["Object ID"]}'`,
