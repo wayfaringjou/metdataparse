@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate-csv": "node generateCSV.js",
-    "generate-seed": "node generateSeed.js"
+    "generate-seed": "node generateSeed.js",
+    "generate-artwork-table": "node generateArtworkTableSeed.js"
   },
   "repository": {
     "type": "git",

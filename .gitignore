@@ -1,1 +1,4 @@
 MetObjects.csv
+*.csv
+*.sql
+node_modules
