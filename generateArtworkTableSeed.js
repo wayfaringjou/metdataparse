@@ -19,21 +19,21 @@ let COUNT = 0;
 const TABLECOLUMNS = [
   '"Object ID"',
   '"Department"',
-  '"Classification"',
-  '"Object Name"',
-  '"Title"',
-  '"Culture"',
-  '"Country"',
-  '"Object Date"',
-  '"Object Begin Date"',
+  //'"Classification"',
+  //'"Object Name"',
+  //'"Title"',
+  //'"Culture"',
+  //'"Country"',
+  //'"Object Date"',
+  //'"Object Begin Date"',
   '"Object End Date"',
   '"Artist Display Name"',
-  '"Artist Begin Date"',
-  '"Artist End Date"',
-  '"Artist Nationality"',
-  '"Is Highlight"',
-  '"API entry"',
-  '"Museum entry"',
+  //'"Artist Begin Date"',
+  //'"Artist End Date"',
+  //'"Artist Nationality"',
+  //'"Is Highlight"',
+  //'"API entry"',
+  //'"Museum entry"',
 ];
 
 const TABLEROWS = [];
@@ -133,8 +133,8 @@ const handleData = (row) => {
         filteredName =
           filteredName?.replace(/\'/g, "''") ?? name.replace(/\'/g, "''");
       }
-      console.log(`Name: ${name}`);
-      console.log(`Filtered: ${filteredName}`);
+      //console.log(`Name: ${name}`);
+      //console.log(`Filtered: ${filteredName}`);
       return `'${filteredName ?? name}'`;
     };
 
@@ -144,28 +144,28 @@ const handleData = (row) => {
       row["Department"]
         ? `'${row["Department"].replace(/\'/g, "''")}'`
         : "null",
-      row["Classification"]
+      /*row["Classification"]
         ? `'${row["Classification"].replace(/\'/g, "''")}'`
         : "null",
       row["Object Name"]
         ? `'${row["Object Name"].replace(/\'/g, "''")}'`
-        : "null",
-      row["Title"] ? `'${row["Title"].replace(/\'/g, "''")}'` : "null",
-      row["Culture"] ? `'${row["Culture"].replace(/\'/g, "''")}'` : "null",
-      row["Country"] ? `'${row["Country"].replace(/\'/g, "''")}'` : "null",
-      row["Object Date"]
+        : "null",*/
+      //row["Title"] ? `'${row["Title"].replace(/\'/g, "''")}'` : "null",
+      //row["Culture"] ? `'${row["Culture"].replace(/\'/g, "''")}'` : "null",
+      //row["Country"] ? `'${row["Country"].replace(/\'/g, "''")}'` : "null",
+      /*row["Object Date"]
         ? `'${row["Object Date"].replace(/\'/g, "''")}'`
         : "null",
       row["Object Begin Date"]
         ? `'${row["Object Begin Date"].replace(/\'/g, "''")}'`
-        : "null",
+        : "null",*/
       row["Object End Date"]
         ? `'${row["Object End Date"].replace(/\'/g, "''")}'`
         : "null",
       row["Artist Display Name"]
         ? filterArtistName(row["Artist Display Name"])
         : "null",
-      row["Artist Begin Date"]
+      /*row["Artist Begin Date"]
         ? `'${row["Artist Begin Date"].replace(/\'/g, "''")}'`
         : "null",
       row["Artist End Date"]
@@ -176,7 +176,7 @@ const handleData = (row) => {
         : "null",
       row["Is Highlight"].toLowerCase(),
       `'${apiEndpoint}${row["Object ID"]}'`,
-      `'${metMuseumURL}${row["Object ID"]}'`,
+      `'${metMuseumURL}${row["Object ID"]}'`,*/
     ];
 
     TABLEROWS.push(`(${filteredRow.join(",")})`);
